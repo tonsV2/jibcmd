@@ -33,4 +33,7 @@ class Jibcmd : CliktCommand() {
     }
 }
 
-fun main(args: Array<String>) = Jibcmd().main(args)
+object Application {
+    @JvmStatic
+    fun main(args: Array<String>) = Jibcmd().main(args)
+}
