@@ -4,13 +4,14 @@ import com.github.ajalt.clikt.core.CliktCommand
 import com.github.ajalt.clikt.parameters.options.multiple
 import com.github.ajalt.clikt.parameters.options.option
 import com.github.ajalt.clikt.parameters.options.pair
+import com.github.ajalt.clikt.parameters.options.required
 import com.google.cloud.tools.jib.api.*
 import java.nio.file.Paths
 
 class Jibcmd : CliktCommand() {
-    val from by option("-f", "--from", help = "Source image")
-    val to by option("-t", "--to", help = "Destination image")
-    val layers: List<Pair<String, String>> by option("-l", "--layer", help = "Layer...").pair().multiple()
+    val from by option("-f", "--from", help = "Source image").required()
+    val to by option("-t", "--to", help = "Destination image").required()
+    val layers: List<Pair<String, String>> by option("-l", "--layer", help = "Layer...").pair().multiple(required = true)
     val username by option("-u", "--user", help = "Username")
     val password by option("-p", "--pass", help = "Password")
 
