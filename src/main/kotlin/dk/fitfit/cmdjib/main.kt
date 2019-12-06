@@ -11,11 +11,11 @@ import com.google.cloud.tools.jib.api.RegistryImage
 import java.nio.file.Paths
 
 class Jibcmd : CliktCommand() {
-    val from by option("-f", "--from", help="Source image")
-    val to by option("-t", "--to", help="Destination image")
-    val layers: List<Pair<String, String>> by option("-l", "--layer", help="Layer...").pair().multiple()
-    val username by option("-u", "--user", help="Username")
-    val password by option("-p", "--pass", help="Password")
+    val from by option("-f", "--from", help = "Source image")
+    val to by option("-t", "--to", help = "Destination image")
+    val layers: List<Pair<String, String>> by option("-l", "--layer", help = "Layer...").pair().multiple()
+    val username by option("-u", "--user", help = "Username")
+    val password by option("-p", "--pass", help = "Password")
 
     override fun run() {
         echo("Building image...")
