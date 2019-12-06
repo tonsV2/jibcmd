@@ -4,10 +4,7 @@ import com.github.ajalt.clikt.core.CliktCommand
 import com.github.ajalt.clikt.parameters.options.multiple
 import com.github.ajalt.clikt.parameters.options.option
 import com.github.ajalt.clikt.parameters.options.pair
-import com.google.cloud.tools.jib.api.AbsoluteUnixPath
-import com.google.cloud.tools.jib.api.Containerizer
-import com.google.cloud.tools.jib.api.Jib
-import com.google.cloud.tools.jib.api.RegistryImage
+import com.google.cloud.tools.jib.api.*
 import java.nio.file.Paths
 
 class Jibcmd : CliktCommand() {
@@ -26,7 +23,13 @@ class Jibcmd : CliktCommand() {
 
         val builder = Jib.from(from)
         layers.forEach { builder.addLayer(listOf(Paths.get(it.first)), AbsoluteUnixPath.get(it.second)) }
-        builder.containerize(Containerizer.to(RegistryImage.named(to).addCredential(username, password)))
+        val containerized = if (!username.isNullOrEmpty() && !password.isNullOrEmpty()) {
+            Containerizer.to(RegistryImage.named(to).addCredential(username, password))
+        } else {
+            Containerizer.to(DockerDaemonImage.named(to))
+        }
+        builder.containerize(containerized)
+        echo("Done building image!")
     }
 }
 
