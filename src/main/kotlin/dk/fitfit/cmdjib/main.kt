@@ -19,7 +19,7 @@ class Jibcmd : CliktCommand() {
         echo("From: $from")
         echo("To: $to")
         echo("With layers")
-        layers.forEach { echo("${it.first}:${it.second}") }
+        layers.forEach { echo(" - ${it.first}:${it.second}") }
 
         val builder = Jib.from(from)
         layers.forEach { builder.addLayer(listOf(Paths.get(it.first)), AbsoluteUnixPath.get(it.second)) }
