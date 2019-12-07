@@ -27,9 +27,7 @@ class Jibcmd : CliktCommand() {
         layers.forEach {
             val path = File(it.first)
             val paths = if (path.isDirectory) {
-                path.listFiles()?.map { file ->
-                    Paths.get(file.toString())
-                }
+                path.listFiles()?.map { file -> Paths.get(file.toString()) }
             } else {
                 Paths.get(it.first)
             }
