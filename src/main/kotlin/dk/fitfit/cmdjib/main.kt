@@ -10,11 +10,12 @@ import java.io.File
 import java.nio.file.Paths
 
 class Jibcmd : CliktCommand() {
-    val from by option("-f", "--from", help = "Source image").required()
-    val to by option("-t", "--to", help = "Destination image").required()
-    val layers: List<Pair<String, String>> by option("-l", "--layer", help = "Layer... Eg. --layer ./index.html /srv").pair().multiple(required = true)
-    val username by option("-u", "--user", help = "Registry username")
-    val password by option("-p", "--pass", help = "Registry Password")
+    private val from by option("-f", "--from", help = "Source image").required()
+    private val to by option("-t", "--to", help = "Destination image").required()
+    private val layers: List<Pair<String, String>> by option("-l", "--layer", help = "Layer... Eg. --layer ./index.html /srv").pair().multiple(required = true)
+    private val user by option("-u", "--user", help = "User running the application")
+    private val username by option("--reg-user", help = "Registry username")
+    private val password by option("--reg-pass", help = "Registry Password")
 
     override fun run() {
         echo("Building image...")
@@ -38,6 +39,7 @@ class Jibcmd : CliktCommand() {
         } else {
             Containerizer.to(DockerDaemonImage.named(to))
         }
+        builder.setUser(user)
         builder.containerize(containerized)
         echo("Done building image!")
     }
