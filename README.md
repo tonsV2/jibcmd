@@ -5,6 +5,11 @@
 ./gradlew run --args='--help'
 ```
 
+## Build and run jar file
+```bash
+./gradlew shadowJar && java -jar build/libs/cmdjib-1.0-SNAPSHOT-all.jar
+```
+
 ## Example 1 - Add single static file to an Nginx image
 ```bash
 echo "<h1>Hello from jibcmd</h1>" > index.html
