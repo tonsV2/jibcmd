@@ -29,9 +29,9 @@ class Jibcmd : CliktCommand() {
             val paths = if (path.isDirectory) {
                 path.listFiles()?.map { file -> Paths.get(file.toString()) }
             } else {
-                Paths.get(it.first)
+                listOf(Paths.get(it.first))
             }
-            builder.addLayer(paths?.toList(), AbsoluteUnixPath.get(it.second))
+            builder.addLayer(paths, AbsoluteUnixPath.get(it.second))
         }
         val containerized = if (!username.isNullOrEmpty() && !password.isNullOrEmpty()) {
             Containerizer.to(RegistryImage.named(to).addCredential(username, password))
