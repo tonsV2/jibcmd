@@ -1,0 +1,2 @@
+#! /usr/bin/env bash
+java -jar cmdjib-1.0-SNAPSHOT-all.jar "$@"
