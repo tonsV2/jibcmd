@@ -2,17 +2,20 @@
 
 ## Setup
 ### Build
-This needs to be done before the `jibcmd` command will work
+#### Jar
 ```bash
 ./gradlew shadowJar
 ```
 
-### Install
-The following commands need to be executed as root or prefixed with sudo
+#### Deb and rpm packages
 ```bash
-cp jibcmd /usr/local/bin/
-cp build/libs/jibcmd-1.0-SNAPSHOT-all.jar /usr/local/bin/
+./gradlew jpackage
 ```
+
+### Install
+The application can be installed by either rpm or deb. Please see `releases` from the menu above.
+
+Note that the application is installed under `/opt` - Make sure to include that in your `$PATH` variable.
 
 ## Show help
 ```bash
@@ -47,3 +50,4 @@ jibcmd --from nginxinc/nginx-unprivileged:stable-alpine --to your.docker.registr
 ## Credits
 * https://github.com/ajalt/clikt
 * https://github.com/GoogleContainerTools/jib/tree/master/jib-core
+* https://github.com/beryx/badass-runtime-plugin

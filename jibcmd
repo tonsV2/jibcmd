@@ -1,2 +1,0 @@
-#! /usr/bin/env bash
-java -jar jibcmd-1.0-SNAPSHOT-all.jar "$@"
