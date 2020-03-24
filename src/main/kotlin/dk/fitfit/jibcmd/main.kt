@@ -1,4 +1,4 @@
-package dk.fitfit.cmdjib
+package dk.fitfit.jibcmd
 
 import com.github.ajalt.clikt.core.CliktCommand
 import com.github.ajalt.clikt.parameters.options.multiple

@@ -29,5 +29,5 @@ compileTestKotlin {
 }
 
 application {
-    mainClassName = "dk.fitfit.cmdjib.Application"
+    mainClassName = "dk.fitfit.jibcmd.Application"
 }
