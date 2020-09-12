@@ -1,3 +1,8 @@
+!!!DEPRECATED!!!
+
+https://github.com/GoogleContainerTools/jib/tree/master/jib-cli
+
+
 # Simple command line wrapper for Jib core libraries
 
 ## Setup
